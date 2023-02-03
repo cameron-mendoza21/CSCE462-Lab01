@@ -1,6 +1,8 @@
 #importing library
 import time
 import RPi.GPIO as GPIO
+from blink import blink
+from countdown import countdown
 
 GPIO.setwarnings(False)
 
@@ -62,134 +64,18 @@ GPIO.output(11, False)
 
 #event handler
 def handler(self):
-     #button has been press, its on a 20 second cooldown starting now
-
-        #Code for LED to blink blue 3 times, turn red, and other LED Turns Green
-
-        GPIO.output(20, False)
-        GPIO.output(8, True)
-        time.sleep(0.5)
-        GPIO.output(8, False)
-        time.sleep(0.5)
-        GPIO.output(8, True)
-        time.sleep(0.5)
-        GPIO.output(8, False)
-        time.sleep(0.5)
-        GPIO.output(8, True)
-        time.sleep(0.5)
-        GPIO.output(8, False)
-        time.sleep(0.5)
-        GPIO.output(21, True)
-        GPIO.output(12, False)
-        GPIO.output(1, True)  
-        
-           
-        #countdown
-        #9
-        GPIO.output(13, True)
-        GPIO.output(6, True)
-        GPIO.output(5, True)
-        GPIO.output(0, True)
-        GPIO.output(11, True)
-        time.sleep(1)
-        #8
-        GPIO.output(26, True)
-        GPIO.output(19, True)
-        time.sleep(1)
-        #7
-        GPIO.output(6, False)
-        GPIO.output(5, False)
-        GPIO.output(26, False)
-        GPIO.output(19, False)
-        time.sleep(1)
-        #6
-        GPIO.output(6, True)
-        GPIO.output(5, True)
-        GPIO.output(26, True)
-        GPIO.output(19, True)
-        GPIO.output(0, True)
-        GPIO.output(11, False)
-        time.sleep(1)
-        #5
-        GPIO.output(26, False)
-        time.sleep(1)
-        #4
-        GPIO.output(19, False)
-        GPIO.output(0, False)
-        GPIO.output(11, True)
-
-        #start blinking blue
-        GPIO.output(1, False)
-        GPIO.output(7, True)
-        time.sleep(0.5)
-        GPIO.output(7, False)
-        time.sleep(0.5)
+    #button has been press, its on a 20 second cooldown starting now
+    blink()
+    countdown()
+    #sleep the code for 11 seconds before button can be used again
+    time.sleep(2)
 
 
-        #3
-        GPIO.output(5, False)
-        GPIO.output(19, True)
-        GPIO.output(0, True)
-
-        GPIO.output(7, True)
-        time.sleep(0.5)
-        GPIO.output(7, False)
-        time.sleep(0.5)
-        #2
-        GPIO.output(26, True)
-        GPIO.output(13, False)
-
-        GPIO.output(7, True)
-        time.sleep(0.5)
-        GPIO.output(7, False)
-        time.sleep(0.5)
-        #1
-        GPIO.output(13, True)
-        GPIO.output(19, False)
-        GPIO.output(6, False)
-        GPIO.output(0, False)
-        GPIO.output(26, False)
-
-        GPIO.output(7, True)
-        time.sleep(0.5)
-        GPIO.output(7, False)
-        time.sleep(0.5)
-        #0
-        GPIO.output(5, True)
-        GPIO.output(0, True)
-        GPIO.output(11, True)
-        GPIO.output(26, True)
-        GPIO.output(19, True)
-
-
-        #Car light is now Green!
-        GPIO.output(21,False)   
-        GPIO.output(20,True)
-
-        GPIO.output(1,False)
-        GPIO.output(12,True)
-        time.sleep(1)
-
-        GPIO.output(26, False)
-        GPIO.output(19, False)
-        GPIO.output(13, False)
-        GPIO.output(6, False)
-        GPIO.output(5, False)
-        GPIO.output(0, False)
-        GPIO.output(11, False)
-
-        #sleep the code for 11 seconds before button can be used again
-        time.sleep(11)
-
-
-GPIO.add_event_detect(9, GPIO.BOTH, handler)
+GPIO.add_event_detect(9, GPIO.FALLING, handler)
 
 
 while True:
     time.sleep(1e6)
 
-
-
-
-    #clean up
-    #GPIO.cleanup()
+#clean up
+#GPIO.cleanup()

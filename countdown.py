@@ -25,70 +25,100 @@ GPIO.output(0, False)
 GPIO.output(11, False)
 
 #time.sleep(1)
+def countdown():
+    #countdown
+    #9
+    GPIO.output(13, True)
+    GPIO.output(6, True)
+    GPIO.output(5, True)
+    GPIO.output(0, True)
+    GPIO.output(11, True)
+    time.sleep(1)
+    #8
+    GPIO.output(26, True)
+    GPIO.output(19, True)
+    time.sleep(1)
+    #7
+    GPIO.output(6, False)
+    GPIO.output(5, False)
+    GPIO.output(26, False)
+    GPIO.output(19, False)
+    time.sleep(1)
+    #6
+    GPIO.output(6, True)
+    GPIO.output(5, True)
+    GPIO.output(26, True)
+    GPIO.output(19, True)
+    GPIO.output(0, True)
+    GPIO.output(11, False)
+    time.sleep(1)
+    #5
+    GPIO.output(26, False)
+    time.sleep(1)
+    #4
+    GPIO.output(19, False)
+    GPIO.output(0, False)
+    GPIO.output(11, True)
 
-#9
-GPIO.output(13, True)
-GPIO.output(6, True)
-GPIO.output(5, True)
-GPIO.output(0, True)
-GPIO.output(11, True)
-time.sleep(1)
-#8
-GPIO.output(26, True)
-GPIO.output(19, True)
-time.sleep(1)
-#7
-GPIO.output(6, False)
-GPIO.output(5, False)
-GPIO.output(26, False)
-GPIO.output(19, False)
-time.sleep(1)
-#6
-GPIO.output(6, True)
-GPIO.output(5, True)
-GPIO.output(26, True)
-GPIO.output(19, True)
-GPIO.output(0, True)
-GPIO.output(11, False)
-time.sleep(1)
-#5
-GPIO.output(26, False)
-time.sleep(1)
-#4
-GPIO.output(19, False)
-GPIO.output(0, False)
-GPIO.output(11, True)
-time.sleep(1)
-#3
-GPIO.output(5, False)
-GPIO.output(19, True)
-GPIO.output(0, True)
-time.sleep(1)
-#2
-GPIO.output(26, True)
-GPIO.output(13, False)
-time.sleep(1)
-#1
-GPIO.output(13, True)
-GPIO.output(19, False)
-GPIO.output(6, False)
-GPIO.output(0, False)
-GPIO.output(26, False)
-time.sleep(1)
-#0
-GPIO.output(5, True)
-GPIO.output(0, True)
-GPIO.output(11, True)
-GPIO.output(26, True)
-GPIO.output(19, True)
-time.sleep(1)
+    #start blinking blue
+    GPIO.output(1, False)
+    GPIO.output(7, True)
+    time.sleep(0.5)
+    GPIO.output(7, False)
+    time.sleep(0.5)
 
-GPIO.output(26, False)
-GPIO.output(19, False)
-GPIO.output(13, False)
-GPIO.output(6, False)
-GPIO.output(5, False)
-GPIO.output(0, False)
-GPIO.output(11, False)
 
-time.sleep(2)
+    #3
+    GPIO.output(5, False)
+    GPIO.output(19, True)
+    GPIO.output(0, True)
+
+    GPIO.output(7, True)
+    time.sleep(0.5)
+    GPIO.output(7, False)
+    time.sleep(0.5)
+    #2
+    GPIO.output(26, True)
+    GPIO.output(13, False)
+
+    GPIO.output(7, True)
+    time.sleep(0.5)
+    GPIO.output(7, False)
+    time.sleep(0.5)
+    #1
+    GPIO.output(13, True)
+    GPIO.output(19, False)
+    GPIO.output(6, False)
+    GPIO.output(0, False)
+    GPIO.output(26, False)
+
+    GPIO.output(7, True)
+    time.sleep(0.5)
+    GPIO.output(7, False)
+    time.sleep(0.5)
+    #0
+    GPIO.output(5, True)
+    GPIO.output(0, True)
+    GPIO.output(11, True)
+    GPIO.output(26, True)
+    GPIO.output(19, True)
+
+
+    #Car light is now Green!
+    GPIO.output(21,False)   
+    GPIO.output(20,True)
+
+    GPIO.output(1,False)
+    GPIO.output(12,True)
+    time.sleep(1)
+
+    GPIO.output(26, False)
+    GPIO.output(19, False)
+    GPIO.output(13, False)
+    GPIO.output(6, False)
+    GPIO.output(5, False)
+    GPIO.output(0, False)
+    GPIO.output(11, False)
+
+#time.sleep(2)
+#GPIO.cleanup()
