@@ -68,7 +68,7 @@ def handler(self):
     blink()
     countdown()
     #sleep the code for 11 seconds before button can be used again
-    time.sleep(2)
+    time.sleep(11)
 
 
 GPIO.add_event_detect(9, GPIO.FALLING, handler)
