@@ -45,8 +45,6 @@ GPIO.output(5, False)
 GPIO.output(0, False)
 GPIO.output(11, False)
 
-time.sleep(2)
-
 #By DEFAULT: Traffic Light 2 should stay GREEN, Traffic Light 1 should stay RED
 
 #System requirements: 
@@ -61,13 +59,14 @@ time.sleep(2)
 #becomes green. 
 #f. When the button is pressed once there will be a 20 seconds cooldown to be able 
 #to make another valid press. 
-cd = 0
 
 while True:
     #car light stays green
     #people light stays red
 
     if(not GPIO.input(9)):
+        #button has been press, its on a 20 second cooldown starting now
+
         #Code for LED to blink blue 3 times, turn red, and other LED Turns Green
 
         GPIO.output(20, False)
@@ -121,23 +120,43 @@ while True:
         GPIO.output(19, False)
         GPIO.output(0, False)
         GPIO.output(11, True)
-        time.sleep(1)
+
+        #start blinking blue
+        GPIO.output(1, False)
+        GPIO.output(7, True)
+        time.sleep(0.5)
+        GPIO.output(7, False)
+        time.sleep(0.5)
+
+
         #3
         GPIO.output(5, False)
         GPIO.output(19, True)
         GPIO.output(0, True)
-        time.sleep(1)
+
+        GPIO.output(7, True)
+        time.sleep(0.5)
+        GPIO.output(7, False)
+        time.sleep(0.5)
         #2
         GPIO.output(26, True)
         GPIO.output(13, False)
-        time.sleep(1)
+
+        GPIO.output(7, True)
+        time.sleep(0.5)
+        GPIO.output(7, False)
+        time.sleep(0.5)
         #1
         GPIO.output(13, True)
         GPIO.output(19, False)
         GPIO.output(6, False)
         GPIO.output(0, False)
         GPIO.output(26, False)
-        time.sleep(1)
+
+        GPIO.output(7, True)
+        time.sleep(0.5)
+        GPIO.output(7, False)
+        time.sleep(0.5)
         #0
         GPIO.output(5, True)
         GPIO.output(0, True)
@@ -162,6 +181,8 @@ while True:
         GPIO.output(0, False)
         GPIO.output(11, False)
 
+        #sleep the code for 11 seconds before button can be used again
+        time.sleep(11)
 
     else:
         GPIO.output(20, True)
