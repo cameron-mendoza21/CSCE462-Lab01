@@ -64,11 +64,13 @@ GPIO.output(11, False)
 
 #event handler
 def handler(self):
+    GPIO.remove_event_detect(9) #to prevent queued events to happen
     #button has been press, its on a 20 second cooldown starting now
     blink()
     countdown()
     #sleep the code for 11 seconds before button can be used again
     time.sleep(11)
+    GPIO.add_event_detect(9, GPIO.FALLING, handler) #re-enabling the interrupts
 
 
 GPIO.add_event_detect(9, GPIO.FALLING, handler)
