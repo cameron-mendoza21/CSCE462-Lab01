@@ -24,7 +24,7 @@ GPIO.output(5, False)
 GPIO.output(0, False)
 GPIO.output(11, False)
 
-time.sleep(1)
+#time.sleep(1)
 
 #9
 GPIO.output(13, True)
@@ -81,6 +81,14 @@ GPIO.output(0, True)
 GPIO.output(11, True)
 GPIO.output(26, True)
 GPIO.output(19, True)
-time.sleep(2)
+time.sleep(1)
 
-GPIO.cleanup()
+GPIO.output(26, False)
+GPIO.output(19, False)
+GPIO.output(13, False)
+GPIO.output(6, False)
+GPIO.output(5, False)
+GPIO.output(0, False)
+GPIO.output(11, False)
+
+time.sleep(2)

@@ -1,9 +1,13 @@
 #importing library
 import time
 import RPi.GPIO as GPIO
+
 GPIO.setwarnings(False)
 
 GPIO.setmode(GPIO.BCM)
+
+#BUTTON setup
+GPIO.setup(9, GPIO.IN) #Button Input
 
 #RBG LED 2 setup [Car Light]
 GPIO.setup(21, GPIO.OUT) #RED
@@ -26,29 +30,26 @@ GPIO.output(7, False)
 
 time.sleep(2)
 
-#Code for LED to blink blue 3 times, turn red, and other LED Turns Green
-GPIO.output(20, False)
-GPIO.output(16, True)
-time.sleep(0.5)
-GPIO.output(16, False)
-time.sleep(0.5)
-GPIO.output(16, True)
-time.sleep(0.5)
-GPIO.output(16, False)
-time.sleep(0.5)
-GPIO.output(16, True)
-time.sleep(0.5)
-GPIO.output(16, False)
-time.sleep(0.5)
-GPIO.output(16, False)
-GPIO.output(21, True)
+def handle_input_button(channel):
+    # Part b
+    for i in range(3):
+        GPIO.output(16, GPIO.HIGH)
+        time.sleep(0.1)
+        GPIO.output(16, GPIO.LOW)
+        time.sleep(0.1)
+    GPIO.output(21, GPIO.HIGH)
 
-GPIO.output(12, True)
-GPIO.output(1, False)
+    time.sleep(20)
 
-GPIO.output(12, False)
-GPIO.output(1, True)
 
-#time.sleep(3)
+GPIO.add_event_detect(9, GPIO.FALLING, callback=handle_input_button, bouncetime=300)
 
-#GPIO.cleanup()
+def main():
+    GPIO.output(20, GPIO.HIGH)
+    time.sleep(0.1)
+
+try:
+    while True:
+        main()
+except KeyboardInterrupt:
+    GPIO.cleanup()

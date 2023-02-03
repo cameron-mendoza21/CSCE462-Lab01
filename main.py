@@ -6,12 +6,12 @@ GPIO.setwarnings(False)
 
 GPIO.setmode(GPIO.BCM)
 
-#RBG LED 2 setup
+#RBG LED 1 setup Car Light
 GPIO.setup(21, GPIO.OUT) #RED
 GPIO.setup(20, GPIO.OUT) #GREEN
-GPIO.setup(16, GPIO.OUT) #BLUE
+GPIO.setup(8, GPIO.OUT) #BLUE
 
-#RGB LED 1 setup
+#RGB LED 2 setup People Light
 GPIO.setup(12, GPIO.OUT) #RED
 GPIO.setup(1, GPIO.OUT) #GREEN
 GPIO.setup(7, GPIO.OUT) #BLUE
@@ -31,7 +31,7 @@ GPIO.setup(9, GPIO.IN) #Button Input
 #LED Setup phase
 GPIO.output(21, False)
 GPIO.output(20, True)
-GPIO.output(16, False)
+GPIO.output(8, False)
 
 GPIO.output(12, True)
 GPIO.output(1, False)
@@ -61,19 +61,121 @@ time.sleep(2)
 #becomes green. 
 #f. When the button is pressed once there will be a 20 seconds cooldown to be able 
 #to make another valid press. 
+cd = 0
 
-#RGB 1 Protocol CAR LIGHT
+while True:
+    #car light stays green
+    #people light stays red
+
+    if(not GPIO.input(9)):
+        #Code for LED to blink blue 3 times, turn red, and other LED Turns Green
+
+        GPIO.output(20, False)
+        GPIO.output(8, True)
+        time.sleep(0.5)
+        GPIO.output(8, False)
+        time.sleep(0.5)
+        GPIO.output(8, True)
+        time.sleep(0.5)
+        GPIO.output(8, False)
+        time.sleep(0.5)
+        GPIO.output(8, True)
+        time.sleep(0.5)
+        GPIO.output(8, False)
+        time.sleep(0.5)
+        GPIO.output(21, True)
+        GPIO.output(12, False)
+        GPIO.output(1, True)  
+        
+           
+        #countdown
+        #9
+        GPIO.output(13, True)
+        GPIO.output(6, True)
+        GPIO.output(5, True)
+        GPIO.output(0, True)
+        GPIO.output(11, True)
+        time.sleep(1)
+        #8
+        GPIO.output(26, True)
+        GPIO.output(19, True)
+        time.sleep(1)
+        #7
+        GPIO.output(6, False)
+        GPIO.output(5, False)
+        GPIO.output(26, False)
+        GPIO.output(19, False)
+        time.sleep(1)
+        #6
+        GPIO.output(6, True)
+        GPIO.output(5, True)
+        GPIO.output(26, True)
+        GPIO.output(19, True)
+        GPIO.output(0, True)
+        GPIO.output(11, False)
+        time.sleep(1)
+        #5
+        GPIO.output(26, False)
+        time.sleep(1)
+        #4
+        GPIO.output(19, False)
+        GPIO.output(0, False)
+        GPIO.output(11, True)
+        time.sleep(1)
+        #3
+        GPIO.output(5, False)
+        GPIO.output(19, True)
+        GPIO.output(0, True)
+        time.sleep(1)
+        #2
+        GPIO.output(26, True)
+        GPIO.output(13, False)
+        time.sleep(1)
+        #1
+        GPIO.output(13, True)
+        GPIO.output(19, False)
+        GPIO.output(6, False)
+        GPIO.output(0, False)
+        GPIO.output(26, False)
+        time.sleep(1)
+        #0
+        GPIO.output(5, True)
+        GPIO.output(0, True)
+        GPIO.output(11, True)
+        GPIO.output(26, True)
+        GPIO.output(19, True)
+
+
+        #Car light is now Green!
+        GPIO.output(21,False)   
+        GPIO.output(20,True)
+
+        GPIO.output(1,False)
+        GPIO.output(12,True)
+        time.sleep(1)
+
+        GPIO.output(26, False)
+        GPIO.output(19, False)
+        GPIO.output(13, False)
+        GPIO.output(6, False)
+        GPIO.output(5, False)
+        GPIO.output(0, False)
+        GPIO.output(11, False)
+
+
+    else:
+        GPIO.output(20, True)
+        GPIO.output(12, True)
+    time.sleep(0.1)
+    #if button is pressed and cooldown over 20
+    #    blink car light 3 times
+    #    switch car light to red, people light to green
+    #    start countdown
+    #    blink people light at 4 seconds
+    #    switch people light to red, car light to green
 
 
 
 
-time.sleep(3)
-
-
-
-#RGB 2 Protocol
-
-
-
-#clean up
-GPIO.cleanup()
+    #clean up
+    #GPIO.cleanup()
